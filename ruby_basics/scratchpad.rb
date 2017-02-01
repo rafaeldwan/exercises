@@ -469,11 +469,6 @@ automobiles = {
 
 #which collection
 
-car = {
-  type:  'sedan',
-  color: 'blue',
-  year:  2003
-}
+car = [[:type, 'sedan'], [:color, 'blue'], [:year, 2003]]
 
-carray = car.split
-p carray
+p %(does this work?)
