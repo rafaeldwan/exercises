@@ -1,0 +1,14 @@
+
+[1mFrom:[0m /home/ubuntu/workspace/exercises/101-109_Small Problems/easy1.rb @ line 131 :
+
+    [1;34m126[0m:   result
+    [1;34m127[0m: [32mend[0m
+    [1;34m128[0m: 
+    [1;34m129[0m: 
+    [1;34m130[0m: puts stringy([1;34m6[0m) == [31m[1;31m'[0m[31m101010[1;31m'[0m[31m[0m
+ => [1;34m131[0m: binding.pry
+    [1;34m132[0m: puts stringy([1;34m9[0m) == [31m[1;31m'[0m[31m101010101[1;31m'[0m[31m[0m
+    [1;34m133[0m: puts stringy([1;34m4[0m) == [31m[1;31m'[0m[31m1010[1;31m'[0m[31m[0m
+    [1;34m134[0m: puts stringy([1;34m7[0m) == [31m[1;31m'[0m[31m1010101[1;31m'[0m[31m[0m
+    [1;34m135[0m:     
+
