@@ -1,6 +1,7 @@
+### 101-109 Small Problems > Easy 1
+
 require 'pry'
 
-### 101-109 Small Problems > Easy 1
 
 # Repeat Yourself
 
@@ -166,6 +167,10 @@ puts sum(123_456_789) == 45
 def calculate_bonus(salary, boss_not_a_dick)
   return 0 unless boss_not_a_dick
   salary / 2
+end
+
+def better_calculate_bonus(salary, boss_not_dick)
+  boss_not_a_dick ? (salary / 2) : 0
 end
 
 puts calculate_bonus(2800, true) == 1400
