@@ -4,11 +4,6 @@ noun = words[1].split
 verb = words[2].split
 adv = words[3].split
 
-p adj.sample
-p noun.sample
-p verb.sample
-p adv.sample
-
 madlib = File.readlines("madly.txt").map(& :chomp).join(" ").split
 so_mad = madlib.map do |word| 
   case word
