@@ -1,0 +1,13 @@
+<form method="post">
+  <h3>Your current balance is $<%= @bankroll %><h3>
+  <p>
+    <label for "bet">Bet:
+      <input name ="bet" type="text" value = "<%= params[:bet] %>"/>
+    </label>
+  </p>
+  <p>
+    <button name="guess" type = "radio" value="1">Guess 1</button>
+    <button name="guess" type = "radio" value="2">Guess 2</button>
+    <button name="guess" type = "radio" value="3">Guess 3</button>
+  </p>
+</form>

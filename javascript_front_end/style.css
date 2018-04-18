@@ -1,0 +1,282 @@
+html {
+  font: 12pt normal Arial, Helvetica, Sans-serif;
+  box-sizing: border-box;
+}
+
+section {
+  border-top: 1px solid lightsteelblue;
+  padding-bottom: 15px;
+  margin: 0 10px;
+}
+
+.animals {
+  display: flex;
+  flex-wrap: wrap;
+  background: lightcyan;
+}
+
+img {
+  width: 200px;
+  padding: 1rem;
+}
+
+figure {
+  position: relative;
+}
+
+figcaption {
+  z-index: 13;
+  background: rgba(0, 0, 0, .5);
+  border-radius: 5px;
+  display: none;
+  font: normal 12px Arial, Helvetica, Sans-serif;
+  color: white;
+  position: absolute;
+  padding: .5rem;
+  top: 120px;
+  left: 120px;
+  width: 200px;
+}
+
+h1, h2, h3, h4 {
+  text-align: center;
+  width: 100%
+}
+
+.remainingD {
+  display: none;
+}
+
+.todos {
+  background-color: lavenderblush;
+  padding: 10px;
+}
+
+.todo {
+  position: relative;
+}
+
+.confirmPrompt {
+  display: none;
+  background: grey;
+  box-sizing: border-box;
+  box-shadow: 3px 3px rgba(0,0,0,.3);
+  border: 1px solid black;
+  position: fixed;
+  top: -200px;
+  left: 50%;
+  margin-left: -250px;
+  margin-top: 500px;
+  padding: 1em;
+  width: 500px;
+  z-index: 42;
+  text-align: center;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.75);
+  z-index: 40;
+}
+
+.menu {
+  cursor: pointer;
+  box-sizing: border-box;
+  box-shadow: rgba(0,0,0,.2) 2px 1px;
+  border: 1px solid lightslategrey;
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 40px;
+  padding: 0px;
+  z-index: 13;
+
+}
+
+.menu li {
+  width: 100px;
+  padding: 4px;
+  box-sizing: border-box;
+  display: block;
+  background: rgba(184, 184, 184, 0.9);
+  border-bottom: 1px solid gray;
+}
+
+.menu li:hover {
+  box-shadow: 2px 2px  rgba(0,0,0,.3) inset;
+}
+
+.car-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+label, select {
+  padding-right: 5px;
+}
+
+.cars input[type="submit"] {
+  margin-top: 5px;
+}
+
+.car {
+  box-shadow: rgba(43, 10, 100, 0.3) 1px 2px;
+  margin: 10px 10px 0 0
+}
+
+.stopwatch {
+  padding: 20px;
+  background-color: cornsilk;
+  text-align: center;
+}
+
+.stopwatch span {
+  font-size: 80px;
+}
+
+.stopwatch div {
+  font-size: 24px;
+}
+
+.calculator {
+  margin-bottom: 20px;
+}
+
+.calculator div {
+  width: 206px;
+  text-align: right;
+}
+.calculator table, .calculator div {
+  font: normal 20px Arial, Helvetica, Sans-Serif;
+  margin: 0 auto;
+}
+
+.calculator .equation {
+  font-size: 12px;;
+}
+
+.calculator td {
+
+  border: 1px solid lightblue;
+  border-radius: 3px;
+  cursor: pointer;
+  text-align: center;
+  width: 45px;
+
+}
+
+.wysiwyg {
+  padding-top: 20px;
+  background: cornflowerblue;
+  height: 500px;
+}
+
+.editable {
+  background: white;
+  border: 1px solid lightgrey;
+  margin: 20px;
+  height: 70%;
+  padding: 10px;
+}
+
+.controls {
+  margin-left: 20px;
+}
+
+.validate form {
+  position: relative;
+  margin: 0 auto;
+  border: 2px solid lightgrey;
+  border-radius: 5px;
+  box-shadow: 2px 2px lightcyan;
+  width: 300px;
+  padding: 20px 20px 0;
+}
+
+.validate p:not(.inputError), .animals p, .todos p, .cars p {
+  width: 100%;
+  font-style: italic;
+  text-align: center;
+}
+
+fieldset {
+  width: 250px;
+  display: block;
+  border: none;
+  margin: 0 auto;
+}
+
+.validate .cc {
+  display: inline;
+  width: 51px;
+}
+
+.validate label, .validate input {
+  box-sizing: border-box;
+  width: 250px;
+  display: block;
+  margin: 0 auto 0;
+}
+
+.validate label {
+  padding-bottom: 5px;
+}
+
+
+.validate input {
+  margin-bottom: 10px;
+  padding: 10px 5px;
+}
+
+.validate input[type="submit"] {
+  width: 100px;
+}
+
+
+.formError {
+  display: none;
+  color: darkred;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.inputError {
+  text-align: center;
+  font-size: 12px;
+  color: darkred;
+  font-weight: bold;
+}
+
+.test {
+  background-color: seashell;
+  padding: 0 10px 10px;
+}
+
+.results {
+  padding: 5px;
+  margin: 2px;
+}
+
+.unanswered {
+  background-color: lightblue;
+  color: blue;
+  border: 1px solid blue;
+}
+
+.correct {
+  background-color: lightgreen;
+  color: green;
+  border: 1px solid green;
+}
+
+.incorrect {
+  background-color: salmon;
+  color: crimson;
+  border: 1px solid crimson;
+}
