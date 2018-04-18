@@ -1,3 +1,4 @@
+/*eslint-disable semi*/
 
 var templates = {};
 
@@ -84,8 +85,7 @@ var todos = [{
 {
   id: 4,
   title: 'Coffee with John'
-},
-];
+},];
 
 var cars = [{
   id: 0,
@@ -145,32 +145,9 @@ var cars = [{
 },
 ];
 
-
-var carOptions = cars.reduce(function (options, car) {
-  if (options.makes.indexOf(car.make) === -1) {
-    options.makes.push(car.make);
-  }
-  if (options.models.indexOf(car.model) === -1) {
-    options.models.push(car.model);
-  }
-  if (options.years.indexOf(car.year) === -1) {
-    options.years.push(car.year);
-  }
-  if (options.prices.indexOf(car.price) === -1) {
-    options.prices.push(car.price);
-  }
-
-  return options;
-}, {
-  makes: [],
-  models: [],
-  years: [],
-  prices: [],
-});
-
 var questions = [{
   id: 1,
-  description: "Who is the author of <cite>The Hitchhiker's Guide to the Galaxy</cite>?",
+  description: 'Who is the author of <cite>The Hitchhiker\'s Guide to the Galaxy</cite>?',
   options: ['Dan Simmons', 'Douglas Adams', 'Stephen Fry', 'Robert A. Heinlein']
 },
 {
@@ -227,6 +204,7 @@ var stopwatch = {
       return string.length === 1 ? '0' + string : string;
     }
     $(this).addClass('stop').removeClass('start').text('Stop');
+
     stopwatch.interval = setInterval(function () {
       newCenti = +$centi.text() + 1;
       if (newCenti % 100 === 0) {
@@ -261,12 +239,34 @@ var stopwatch = {
 }
 
 var carForm = {
+  options: cars.reduce(function (options, car) {
+    if (options.makes.indexOf(car.make) === -1) {
+      options.makes.push(car.make);
+    }
+    if (options.models.indexOf(car.model) === -1) {
+      options.models.push(car.model);
+    }
+    if (options.years.indexOf(car.year) === -1) {
+      options.years.push(car.year);
+    }
+    if (options.prices.indexOf(car.price) === -1) {
+      options.prices.push(car.price);
+    }
+
+    return options;
+  }, {
+    makes: [],
+    models: [],
+    years: [],
+    prices: [],
+  }),
   filter() {
     var results = $(this).serializeArray();
     $('.car').show();
     results.forEach(function (result) {
       if (result.value !== 'all') {
         if (result.name === 'price') {
+          // remove leading '$'
           result.value = result.value.slice(1);
         }
         cars.forEach(function (car) {
@@ -291,6 +291,15 @@ var carForm = {
         }
       });
     }
+  },
+  init() {
+    $('.carFilter select').each(function() {
+      var id = this.id;
+      carForm.options[id].forEach(function (option) {
+        option = id === 'prices' ? '$' + option : option;
+        $(this).append('<option value="' + option + '">' + option + '</option>');
+      }.bind(this));
+    })
   },
 }
 
@@ -456,11 +465,18 @@ var wysiwyg = {
 var quiz = {
   submit() {
     var $this = $(this)
-    var submitted = $this.serializeArray().reduce(function (obj, answer) {
+    var submitted = quiz.formatAnswer($this)
+    var results = quiz.gradeQuiz(submitted)
+    quiz.showResults($this, results)
+  },
+  formatAnswer($this) {
+    return $this.serializeArray().reduce(function (obj, answer) {
       obj[answer.name] = answer.value;
       return obj
     }, {})
-    var results = answerKey.reduce(function (rObj, answer) {
+  },
+  gradeQuiz(submitted) {
+    return answerKey.reduce(function (rObj, answer) {
       var checkMe = submitted['answers' + answer.number]
       if (checkMe) {
         rObj[answer.number] = checkMe === answer.answer ? 'correct' : 'incorrect'
@@ -469,27 +485,27 @@ var quiz = {
       }
       return rObj
     }, {})
-    $this.find('.results').remove()
-
+  },
+  showResults($this, results) {
+    quiz.reset()
     $this.find('.question').each(function () {
-      var $this = $(this);
-      var id = $this.data('id')
+      var $eachThis = $(this);
+      var id = $eachThis.data('id')
       var resultObj = {
         resultClass: results[id]
       }
       switch (results[id]) {
       case 'correct':
-        resultObj.result = "Correct!"
+        resultObj.result = 'Correct!'
         break;
       case 'incorrect':
-        resultObj.result = "Sorry, that's not the right answer."
+        resultObj.result = 'Sorry, that\'s not the right answer.'
         break;
       case 'unanswered':
-        resultObj.result = "Don't panic, but you didn't even answer this one."
+        resultObj.result = 'Don\'t panic, but you didn\'t even answer this one.'
         break;
       }
-      $this.append(templates.result(resultObj))
-
+      $eachThis.append(templates.result(resultObj))
     })
   },
   reset() {
@@ -537,22 +553,15 @@ $(function () {
   $('.car-grid').append(templates.cars({
     cars: cars
   }));
+  carForm.init()
   calculator.init();
   $('.test').append(templates.test({
     questions: questions
   }));
 
-  $('.carFilter select').each(function () {
-    var id = this.id;
-    carOptions[id].forEach(function (option) {
-      option = id === 'prices' ? '$' + option : option;
-      $(this).append('<option value="' + option + '">' + option + '</option>');
-    }.bind(this));
-  });
-
   /*************
-  *   Events   *
-  **************/
+   *   Events   *
+   **************/
 
   $('.animals').on('mouseenter', 'figure', function () {
     var $this = $(this);
@@ -611,7 +620,7 @@ $(function () {
     (carForm.changeMake.bind(this))()
   });
 
-  $('.stopwatch').on('click', '.start', function(e) {
+  $('.stopwatch').on('click', '.start', function (e) {
     e.stopPropagation();
     (stopwatch.start.bind(this))()
   });
@@ -644,8 +653,8 @@ $(function () {
 });
 
 /*************
-*    Form    *
-**************/
+ *    Form    *
+ **************/
 
 document.addEventListener('DOMContentLoaded', function () {
 
